@@ -30,7 +30,7 @@ def place_order(menu):
     ordering = True
     while ordering:
 
-        print("What would you like to order?")
+        print("What would you like to order? ")  
      
         # Create a variable for the menu item number
         i = 1
@@ -83,42 +83,39 @@ def update_order(order, menu_selection, menu_items):
     order (list): A list of dictionaries containing the menu item name, price,
                     and quantity ordered (updated as needed).
     """
-    # Check if the customer typed a number
+       # Check if the customer typed a number
     try:
         # Convert the menu selection to an integer
-        menu_selection = int(menu_selection)
-
+        selection_int = int(menu_selection)
+        
         # Check if the menu selection is in the menu items keys
-        if menu_selection in menu_items:
+        if selection_int in menu_items:
             # Store the item name as a variable
-            item_name = menu_items[menu_selection]["Item name"]
-            item_price = menu_items[menu_selection]["Price"]
-
+            item_name = menu_items[selection_int]["Item name"]
+            item_price = menu_items[selection_int]["Price"]
+            
             # Ask the customer for the quantity of the menu item
-            # Use the item name variable in the question
             quantity_input = input(f"What quantity of {item_name} would you like? (This will default to 1 if number is not entered) ")
-
+            
             # Check if the quantity is a number, default to 1 if not
             try:
                 quantity = int(quantity_input)
             except ValueError:
                 quantity = 1
-
-            # Add a dictionary to the order list 
+            
+            # Add a dictionary to the order list
             order.append({
                 "Item name": item_name,
                 "Price": item_price,
                 "Quantity": quantity
             })
         else:
-            # When the menu selection wasn't valid:
-            # Make sure this EXACT message is printed
+            # When the menu selection wasn't valid
             print(f"{menu_selection} was not a menu option.")
     except ValueError:
         # When the user's input isn't valid
-        # Make sure this EXACT message is printed 
         print(f"{menu_selection} was not a valid input.")
-
+    
     # Return the updated order
     return order
 
