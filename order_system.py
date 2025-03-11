@@ -140,15 +140,15 @@ def update_order(order, menu_selection, menu_items):
         else:
         # TODO: When the user's input isn't valid, 
         # TODO: tell the customer that their input isn't valid
-            print(f"{menu_selection} was not a valid input.") 
+          print(f"{menu_selection} was not a menu option.")
+    except ValueError:
     # TODO: When the menu selection wasn't valid:
     # TODO: Print the menu selection and 
     # TODO: Tell the customer they didn't select a menu option
-        print(f"{menu_selection} was not a menu option.")
-    except ValueError:
-
+          print(f"{menu_selection} was not a valid input.")
+         
     # TODO: Return the updated order
-     return order
+    return order
 
 def print_itemized_receipt(receipt):
     """
@@ -159,7 +159,7 @@ def print_itemized_receipt(receipt):
                     and quantity ordered.
     """
     # Uncomment the following line if you need to check the structure of the receipt
-    #print(receipt)
+    # print(receipt)
 
     # TODO: Loop through the items in the customer's receipt
     for item in receipt:
