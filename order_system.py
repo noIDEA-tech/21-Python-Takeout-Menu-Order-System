@@ -53,11 +53,11 @@ def place_order(menu):
         
         order = update_order(order, menu_selection, menu_items)
       
-        continue_order = input("Would you like to keep ordering? (N)o to quit: ")
+        continue_order = input("Would you like to keep ordering? (N) to quit:\n")
 
         if continue_order.lower() == 'n':
 
-            print("Thank you for your order!")
+            print("Thank you for your order.\n")
 
             prices_list = [item["Price"] * item["Quantity"] for item in order]
 
@@ -66,7 +66,6 @@ def place_order(menu):
             ordering = False
           
     return order, order_total
-
 
 def update_order(order, menu_selection, menu_items):
     """
@@ -95,7 +94,7 @@ def update_order(order, menu_selection, menu_items):
             item_price = menu_items[selection_int]["Price"]
             
             # Ask the customer for the quantity of the menu item
-            quantity_input = input(f"What quantity of {item_name} would you like? (This will default to 1 if number is not entered) ")
+            quantity_input = input(f"What quantity of {item_name} would you like? \n(This will default to 1 if number is not entered) ")
             
             # Check if the quantity is a number, default to 1 if not
             try:
@@ -113,11 +112,12 @@ def update_order(order, menu_selection, menu_items):
             # When the menu selection wasn't valid
             print(f"{menu_selection} was not a menu option.")
     except ValueError:
-        # When the user's input isn't valid
-        print(f"{menu_selection} was not a valid input.")
+        # When the user's input isn't valid - CHANGE THIS LINE TO MATCH THE EXPECTED ERROR
+        print(f"{menu_selection} was not a menu option.")  # Changed from "valid input" to "menu option"
     
     # Return the updated order
     return order
+
 
 def print_itemized_receipt(receipt):
     """
